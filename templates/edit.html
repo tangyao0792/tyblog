@@ -1,0 +1,16 @@
+{% include "adminHeader.html" %}
+
+<form action="/edit" method="post">
+<input type="hidden" name='old' value="{{entry.title}}">
+title:<input type="text" name="title" value="{{entry.title}}">
+catagory:<input type="text" name="catagory" value="{{entry.catagory}}">
+tag:<input type="text" name="tag" value="{{entry.tag}}"> <br>
+markdown:<br>
+<textarea name="markdown" rows=30 cols=100 >
+{{entry.markdown}}
+</textarea>
+<br>
+<input type="submit"> 
+</form>
+
+{% include "footer.html" %}

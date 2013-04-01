@@ -1,0 +1,26 @@
+{% include "header.html" %}
+<br>
+{% for i in range(0, len(entries)) %}
+    {% if i > 0 %}
+        <hr>
+        <br>
+    {% end %}
+    <div class="entry">
+        <a href="/post/{{ entries[i].time[0:10] + '/' + entries[i].title }}"><span class="title">{{ entries[i].title}}</span></a>
+        <p>
+            <span class="time">{{ entries[i].time }} |</span>
+            <span class="categories">
+                <a href="/catagory/?name={{ entries[i].catagory }}">{{ entries[i].catagory }}</a>
+            </span>
+            <span class="count">| {{entries[i].count}}</span>
+        </p>
+        <div class="entry-content">
+            {% raw entries[i].html%}
+        </div>
+    </div>
+{% end %}
+<br>
+<br>
+
+<center><h2><a href="/archives">-->more archives<--</a></h2></center>
+{% include "footer.html" %}

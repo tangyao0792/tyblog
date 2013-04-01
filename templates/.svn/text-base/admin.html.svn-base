@@ -1,0 +1,40 @@
+{% include "adminHeader.html" %}
+    <div class="entry">
+        <table width="100%">
+        <tr><td width="20%">title</td><td width="20%">catagory</td><td width="20%">time</td><td width="40%">operation</td> </tr>
+        {% for entry in entries %}
+            <tr>
+                <td><a href="/post/{{ entry.time[0:10] + '/' + entry.title }}">{{ entry.title}}</a></td>
+                <td><a href="/catagory/?name={{entry.catagory}}">{{entry.catagory}}</a></td>
+                <td>{{entry.time}}</td>
+                <td>
+                    <a href="/edit/?title={{entry.title}}">edit</a> &nbsp;
+                    <a href="/admin/?operation=del&title={{entry.title}}">del</a>
+            </tr>
+        {% end %}
+        
+        </table>
+        {% if total != 0 %}            
+             <a href="/admin">首页</a>
+             {% if now < total %}
+                 <a href="/admin?page={{now+1}}">下一页</a>
+             {% end %}
+             {% for i in range (0, total+1) %}
+                {% if i == now %}
+                    <U>  <a href="/admin?page={{i}}">{{i}}</a>
+</U>
+                {% else %}
+                 <a href="/admin?page={{i}}">{{i}}</a>
+                 {% end %}
+             {% end %}
+             {% if now > 0 %}
+                 <a href="/admin?page={{now-1}}">上一页</a>
+             {% end %}
+             <a href="/admin?page={{total}}">尾页</a>
+        {% end %}
+        
+
+   </div>
+
+ 
+{% include "footer.html" %}

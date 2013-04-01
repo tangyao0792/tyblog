@@ -1,0 +1,122 @@
+@font-face {
+    font-family: 'Exo';
+    font-style: normal;
+    font-weight: 400;
+src: local('Exo Regular'), local('Exo-Regular'), url(/static/fonts/Exo.woff) format('woff');
+}
+@font-face {
+    font-family: 'Knewave';
+    font-style: normal;
+    font-weight: 400;
+src: local('Knewave'), local('Knewave-Regular'), url(/static/fonts/Knewave.woff) format('woff');
+}
+@font-face {
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-weight: 400;
+src: local('Patrick Hand SC'), local('PatrickHandSC-Regular'), url(/static/fonts/PatrickHandSC.woff) format('woff');
+}
+.count
+{
+    color: #FFF
+}
+.nav
+{
+    font-size: 20px;
+    font-family: "exo", "Times";
+}
+.title
+{
+    font-size: 32px !important;
+    color: #2485c1 !important;
+    font-family: "exo", "Times";
+}
+.content
+{
+    font-family: "exo", "Times", "Georgia", "Helvetica";
+    font-size: 15px;
+    height: auto !important;
+    min-height: 400px;
+    line-height: 120%;
+}
+.catagory
+{
+    font-size: 36px;
+    color: #616161;
+}
+.catagory:hover
+{
+    background: #8B1A1A;
+}
+.year
+{
+    font-family: "DejaVu Sans","Tahoma";
+    font-size: 24px;
+    font-weight: bold;
+    color:#404040;
+}
+.month
+{
+    color:#005f6b;
+}
+.time
+{
+    font-family: "Georgia";
+    color: #8B8878
+}
+.header
+{
+    font-family: "Patrick Hand SC",'Dejavu Sans';
+    font-size: 200%
+}
+#what
+{
+    margin: right;
+    font-family: "Knewave", cursive;
+    font-size:60%;
+    color: #666
+}
+.main 
+{
+    margin-right: auto;
+    margin-left: auto;
+    width: 902px;
+    word-wrap:break-word;
+}
+hr
+{
+     height: 1px;
+     border: none;
+     border-top: 1px
+     dashed #066;
+}
+
+.catagories
+{
+    font-family: "Georgia";
+    font-size: 300%;
+}
+
+ul
+{
+    line-height: 100%;
+}
+a
+{
+    font-family: "Cantata One";
+    font-weight: bold;
+    color:#000
+}
+
+a:visited{color:#000}
+a:focus{color:#666}
+a:hover{color:#666}
+a:active{color:#404040}
+a{text-decoration:none}
+
+.search
+{
+    text-align: right; 
+    border: 0;
+}
+

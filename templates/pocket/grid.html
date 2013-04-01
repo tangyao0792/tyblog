@@ -1,0 +1,86 @@
+<script language="javascript" type="text/javascript">
+function get_xmlhttp()
+{
+    //ajax
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    return xmlhttp;
+}
+
+function paint_grid(grid_str)
+{
+    for(var i = 0; i < 16 * 25; i++)
+    {
+        var td = document.getElementById("td" + i);
+        if(grid_str.charAt(i) == '1' )
+        {
+            td.bgColor = "#555"; 
+        }
+        else
+        {
+            td.bgColor = "#000";
+        }
+    }
+    alert(1); 
+}
+
+function refresh_grid()
+{
+    var xmlhttp = get_xmlhttp();
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            paint_grid(xmlhttp.responseText);
+        }
+    }
+    xmlhttp.open("GET", "?pos=-1", true);
+    xmlhttp.send();
+}
+
+function reverse(tdid)
+{
+    var xmlhttp=get_xmlhttp();
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            paint_grid(xmlhttp.responseText);
+        }
+    }
+    xmlhttp.open("GET", "?pos=" + tdid, true);
+    xmlhttp.send();
+}
+</script>
+
+<style type="text/css">
+
+td {
+    cursor: pointer;
+}
+</style>
+
+
+<table>
+<script language="javascript" type="text/javascript">
+for(var i = 0; i < 16; i++)
+{
+    document.write("<tr>")
+    for(var j = 0; j < 25; j++)
+    {
+        var tdid =  (i - 1) * 25 + j;
+        document.write("<td id=\"td" + tdid + "\" onclick=\"reverse(" + tdid + ")\" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>")
+    }
+    document.write("</tr>")
+}
+refresh_grid();
+var timer = window.setInterval("refresh_grid()", 2000);
+</script>
+</table>

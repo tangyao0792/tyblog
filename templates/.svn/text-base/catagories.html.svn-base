@@ -1,0 +1,50 @@
+{% include "header.html" %}
+
+{% for catagory in catagories %}
+        <a href="/catagory/?name={{catagory}}">
+        <span class="catagory">
+            {{catagory}}<sup>{{catagories[catagory]}}</sup>
+        </span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        </a>
+{% end %}
+
+{% for i in range(0, len(entries)) %}
+    {% if i == 0 %}
+        <ul class="year">
+            {{entries[i].time[0:4]}}
+        <ul class="month">
+            {{ month[entries[i].time[5:7]] }}
+
+    {% elif entries[i].time[0:4] != entries[i-1].time[0:4] %}
+        </ul>
+        </ul>
+        <ul class="year">
+            {{entries[i].time[0:4]}}
+            <ul class="month">
+                {{ month[entries[i].time[5:7]] }}
+    {% elif entries[i].time[5:7] != entries[i-1].time[5:7] %}
+       </ul>
+            <ul class="month">
+            {{ month[entries[i].time[5:7]]}}
+    {% end %}
+        <ul><a href="/post/{{ entries[i].time[0:10] + '/' + entries[i].title }}">{{ entries[i].title}}</a></ul>
+{% end %}
+</ul>
+</ul>
+
+{% if total != 0 %}
+    <a href="/catagory/?name={{entries[0].catagory}}&page=0">首页</a>
+    {% if now < total %}
+        <a href="/catagory/?name={{entries[0].catagory}}&page={{now+1}}">下一页</a>
+    {% end %}
+    {% for i in range (0, total+1) %}
+        <a href="/catagory/?name={{entries[0].catagory}}&page={{i}}">{{i}}</a>
+    {% end %}
+    {% if now > 0 %}
+        <a href="/catagory/?name={{entries[0].catagory}}&page={{now-1}}">上一页</a>
+    {% end %}
+    <a href="/catagory/?name={{entries[0].catagory}}&page={{total}}">尾页</a>
+{% end %}
+  
+{% include "footer.html" %}

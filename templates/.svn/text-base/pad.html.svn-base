@@ -1,0 +1,86 @@
+<html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      </head>
+<script language="javascript" type="text/javascript">
+function get_xmlhttp()
+{
+    //ajax
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    return xmlhttp;
+}
+
+var last_content = '';
+
+function save()
+{
+    var xmlhttp = get_xmlhttp();
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            var today = new Date();
+            var auto_save = document.getElementById("auto_save");
+            auto_save.innerHTML = "auto saved. &nbsp; " 
+            + today.getHours() + ":"
+            + today.getMinutes() + ":"
+            + today.getSeconds();
+            setTimeout(function(){
+                auto_save.innerHTML = "";
+            }, 5000);
+        }
+    }
+    var url = "{{url}}";
+    var content = document.getElementById("content").value;
+    if(last_content == content)
+    {
+        return;
+    }
+    last_content = content;
+    var post_data = "content=" + content;
+    xmlhttp.open("post", "/pad/" + url, true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send(encodeURI(post_data));
+}
+
+window.setInterval("save()", 10000);
+
+</script>
+<style type="text/css">
+textarea
+{
+    border="0px";
+    resize: none;
+    border-style: solid;
+    border-color: #FFFFFF;
+    font-size: 20px;
+    outline:none;
+}
+#input
+{
+    float: left;
+}
+</style>
+<body>
+    <form method='POST' action=''>
+    <div id='input'>
+    <textarea cols=80 rows=24 name="content" id="content">{{content}}</textarea>
+    </div>
+    <input type="hidden" value="{{url}}">
+    <input type="submit">
+    </form>
+
+    <div id='auto_save'>
+        
+    </div>
+</body>
+
+</html>

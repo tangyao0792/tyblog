@@ -1,0 +1,14 @@
+{% include "adminHeader.html" %}
+
+<form action="/NewPost" method="post">
+title:<input type="text" name="title">
+catagory:<input type="text" name="catagory">
+tag:<input type="text" name="tag"> <br>
+markdown:<br>
+<textarea name="markdown" rows=30 cols=100>
+</textarea>
+<br>
+<input type="submit"> 
+</form>
+
+{% include "footer.html" %}

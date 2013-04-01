@@ -1,0 +1,22 @@
+{% include "header.html" %}
+    <div class="entry">
+    <form method="post" action="/login">
+    <table align=center>
+    <tr><td ><h2>The way to the paradise.</h2></td></tr>
+    <tr><td>
+        what's your name?</td><td><input type="text" name="username"></td></tr>
+    <tr><td>
+        are you talent?</td><td><input type="password" name="password"></td></tr>
+    <tr><td>
+        <input type="submit">
+        </td>
+    </tr>
+    </table>
+    </form>
+   </div>
+
+<br>
+<br>
+<hr>
+ 
+{% include "footer.html" %}
